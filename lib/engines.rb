@@ -10,8 +10,8 @@ module BigpipeRails
     
     initializer("bigpipe_rails.add_bigpipe_js") do
       # copy over our bigpipe
-      FileUtils.mkdir_p(File.join(Rails.root, "assets"))
-      FileUtils.cp(File.join(BigpipeRails.root, "assets", "bigpipe.js"), File.join(Rails.root, "assets"))
+      FileUtils.mkdir_p(File.join(Rails.root, "app", "assets", "javascripts"))
+      FileUtils.cp(File.join(BigpipeRails.root, "assets", "bigpipe.js"), File.join(Rails.root, "app", "assets", "javascripts"))
     end
   end
 end

@@ -12,7 +12,7 @@ describe "BigpipeRails" do
   
   it "should move the generated js file into the public directory" do
     # Rails.root is in the dummy app
-    File.exists?(File.join(Rails.root,'public','javascripts','bigpipe.js')).should be true
+    File.exists?(File.join(Rails.root,'app','assets','javascripts','bigpipe.js')).should be true
   end
   
 end
