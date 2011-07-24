@@ -1,13 +1,33 @@
+ENV["RAILS_ENV"] = "test"
+
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'rspec'
+# get the spec_helper file from our dummy app
+require File.expand_path("../dummy_app/spec/spec_helper.rb",  __FILE__)
+# Run any available migration
+ActiveRecord::Migrator.migrate File.expand_path("../dummy_app/db/migrate/", __FILE__)
+
 require 'bigpipe_rails'
 
-# Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+# No idea why this is necessary - maybe a Rails 3.1 issue?  But Rspec isn't including
+# any integration test methods
+Rspec::Core::ExampleGroup.send(:include, RSpec::Rails::RequestExampleGroup)
+
+
+ActionMailer::Base.delivery_method = :test
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.default_url_options[:host] = "test.com"
+
+# start the debugger
+require "ruby-debug"
+Debugger.start
+
+Rails.backtrace_cleaner.remove_silencers!
+
+# Load support files
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
-  
+  config.mock_with :mocha
 end

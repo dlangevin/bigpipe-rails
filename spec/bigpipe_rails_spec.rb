@@ -1,7 +1,15 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require "spec_helper"
 
 describe "BigpipeRails" do
-  it "fails" do
-    fail "hey buddy, you should probably rename this file and start specing for real"
+  it "is included in ApplicationHelper" do
+    ApplicationHelper.public_instance_methods.should include :bigpipe
+  end
+  
+  describe "GET /test" do
+    it "displays bigpipe content as a javascript tag" do
+      debugger
+      get("/test")
+      true
+    end
   end
 end
