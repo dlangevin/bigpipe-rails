@@ -1,5 +1,5 @@
-# BigPipe - singleton/factory for PageletResources and Pagelets
-class BigPipe
+# Bigpipe - singleton/factory for PageletResources and Pagelets
+class Bigpipe
   # set up our instance variables to hold the CSS/JS PageletResources
   constructor : ()->
     @css = {}
@@ -82,13 +82,13 @@ class Pagelet
     @on_load = data.on_load ? ()->
     this.init_resources(data)
     this.load_css()
-  # use BigPipe's factory method to find or create the js and css resources
+  # use Bigpipe's factory method to find or create the js and css resources
   init_resources : (data)->
     $j.each((data['css'] || []),(i, file)=>
-      this.css_resources.push(window.BigPipe.get_resource(file, 'css'))
+      this.css_resources.push(window.Bigpipe.get_resource(file, 'css'))
     )
     $j.each((data['js'] || []),(i, file)=>
-      this.js_resources.push(window.BigPipe.get_resource(file, 'js'))
+      this.js_resources.push(window.Bigpipe.get_resource(file, 'js'))
     )
   # first phase - load the css files
   load_css : ()->
@@ -147,4 +147,4 @@ class Pagelet
       $j(@container).append(@content)
 
 this.$j = jQuery.noConflict()
-this.BigPipe = new BigPipe()
+this.Bigpipe = new Bigpipe()

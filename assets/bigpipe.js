@@ -1,5 +1,5 @@
 (function() {
-  var BigPipe, CssResource, JsResource, Pagelet, PageletResource;
+  var Bigpipe, CssResource, JsResource, Pagelet, PageletResource;
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; }, __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
     function ctor() { this.constructor = child; }
@@ -8,17 +8,17 @@
     child.__super__ = parent.prototype;
     return child;
   };
-  BigPipe = (function() {
-    function BigPipe() {
+  Bigpipe = (function() {
+    function Bigpipe() {
       this.get_resource = __bind(this.get_resource, this);
       this.add_pagelet = __bind(this.add_pagelet, this);      this.css = {};
       this.js = {};
       this.pagelets = [];
     }
-    BigPipe.prototype.add_pagelet = function(data) {
+    Bigpipe.prototype.add_pagelet = function(data) {
       return this.pagelets.push(new Pagelet(data));
     };
-    BigPipe.prototype.get_resource = function(file, type) {
+    Bigpipe.prototype.get_resource = function(file, type) {
       var _base, _base2, _ref, _ref2;
       if (type === "css") {
                 if ((_ref = (_base = this.css)[file]) != null) {
@@ -36,7 +36,7 @@
         return this.js[file];
       }
     };
-    return BigPipe;
+    return Bigpipe;
   })();
   PageletResource = (function() {
     function PageletResource(file_name) {
@@ -97,10 +97,10 @@
     }
     Pagelet.prototype.init_resources = function(data) {
       $j.each(data['css'] || [], __bind(function(i, file) {
-        return this.css_resources.push(window.BigPipe.get_resource(file, 'css'));
+        return this.css_resources.push(window.Bigpipe.get_resource(file, 'css'));
       }, this));
       return $j.each(data['js'] || [], __bind(function(i, file) {
-        return this.js_resources.push(window.BigPipe.get_resource(file, 'js'));
+        return this.js_resources.push(window.Bigpipe.get_resource(file, 'js'));
       }, this));
     };
     Pagelet.prototype.load_css = function() {
@@ -160,5 +160,5 @@
     return Pagelet;
   })();
   this.$j = jQuery.noConflict();
-  this.BigPipe = new BigPipe();
+  this.Bigpipe = new Bigpipe();
 }).call(this);

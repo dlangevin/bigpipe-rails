@@ -3,20 +3,20 @@
 <html>
   <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../assets/big_pipe.js"></script>
+    <script src="../assets/bigpipe.js"></script>
     <link rel="stylesheet" href="qunit.css" type="text/css" media="screen" />
     <script type="text/javascript" src="qunit.js"></script>
 
     <script>
       $j(document).ready(function(){
 
-        module("BigPipe");
+        module("Bigpipe");
 
         test("instance variable initialization", function() {
-          equals( BigPipe.pagelets.length, 0, "initialized with an empty array" );
+          equals( Bigpipe.pagelets.length, 0, "initialized with an empty array" );
 
-          ok( $j.isEmptyObject(BigPipe.css), "initialized with an empty object" );
-          ok( $j.isEmptyObject(BigPipe.js),  "initialized with an empty object" );
+          ok( $j.isEmptyObject(Bigpipe.css), "initialized with an empty object" );
+          ok( $j.isEmptyObject(Bigpipe.js),  "initialized with an empty object" );
         });
 
         module("Pagelet");
@@ -28,11 +28,11 @@
             append   : true
           };
 
-          BigPipe.add_pagelet(data);
+          Bigpipe.add_pagelet(data);
 
-          equals( BigPipe.pagelets.length, 1, "the pagelet resource created" );
+          equals( Bigpipe.pagelets.length, 1, "the pagelet resource created" );
 
-          pagelet = BigPipe.pagelets[0];
+          pagelet = Bigpipe.pagelets[0];
 
           equals( pagelet.container, "#my_container",   "the container instance variable initialized correctly" );
           equals( pagelet.content,   "<p>Heya!</p>",    "the content instance variable initialized correctly" );
@@ -50,14 +50,14 @@
             css      : ["my_css"]
           };
 
-          BigPipe.add_pagelet(data);
+          Bigpipe.add_pagelet(data);
           setTimeout(function(){}, 200); // let the resource load to completion, ie load_phase 2
 
-          ok( BigPipe.css["my_css"], "the css resource was created" );
-          equals( BigPipe.css["my_css"].file_name, "my_css", "the css resource has the correct filename" );
-          equals( BigPipe.css["my_css"].load_phase, 2, "the css resource fully loaded" );
+          ok( Bigpipe.css["my_css"], "the css resource was created" );
+          equals( Bigpipe.css["my_css"].file_name, "my_css", "the css resource has the correct filename" );
+          equals( Bigpipe.css["my_css"].load_phase, 2, "the css resource fully loaded" );
 
-          element = BigPipe.css["my_css"].el;
+          element = Bigpipe.css["my_css"].el;
 
           equals(element.attr('rel'), "stylesheet");
           equals(element.attr('href'), "my_css.css");
@@ -70,15 +70,15 @@
             js       : ["my_js"]
           };
 
-          BigPipe.add_pagelet(data);
+          Bigpipe.add_pagelet(data);
           setTimeout(function(){}, 200); // let the resource load to completion, ie load_phase 2
 
-          ok( BigPipe.js["my_js"], "the js resource was created" );
-          equals( BigPipe.js["my_js"].file_name, "my_js", "the js resource has the correct filename" );
+          ok( Bigpipe.js["my_js"], "the js resource was created" );
+          equals( Bigpipe.js["my_js"].file_name, "my_js", "the js resource has the correct filename" );
 
-          equals( BigPipe.js["my_js"].load_phase, 2, "the js resource fully loaded" );
+          equals( Bigpipe.js["my_js"].load_phase, 2, "the js resource fully loaded" );
 
-          element = BigPipe.js["my_js"].el;
+          element = Bigpipe.js["my_js"].el;
 
           equals(element.attr('type'), "text/javascript");
           equals(element.attr('src'), "my_js.js");
@@ -96,18 +96,18 @@
             css      : file_names
           };
 
-          BigPipe.add_pagelet(data);
+          Bigpipe.add_pagelet(data);
           setTimeout(function(){}, 200); // let the resource load to completion, ie load_phase 2
 
           for(i = 0; i < file_names.length; i++) {
             file_name = file_names[i];
 
-            ok( BigPipe.css[file_name], "the css resource was created" );
-            equals( BigPipe.css[file_name].file_name, file_name, "the css resource has the correct filename" );
+            ok( Bigpipe.css[file_name], "the css resource was created" );
+            equals( Bigpipe.css[file_name].file_name, file_name, "the css resource has the correct filename" );
 
-            equals( BigPipe.css[file_name].load_phase, 2, "the css resource fully loaded" );
+            equals( Bigpipe.css[file_name].load_phase, 2, "the css resource fully loaded" );
 
-            element = BigPipe.css[file_name].el;
+            element = Bigpipe.css[file_name].el;
 
             equals(element.attr('rel'), "stylesheet");
             equals(element.attr('href'), file_name + ".css");
@@ -126,18 +126,18 @@
             js      : file_names
           };
 
-          BigPipe.add_pagelet(data);
+          Bigpipe.add_pagelet(data);
           setTimeout(function(){}, 200); // let the resource load to completion, ie load_phase 2
 
           for(i = 0; i < file_names.length; i++) {
             file_name = file_names[i];
 
-            ok( BigPipe.js[file_name], "the js resource was created" );
-            equals( BigPipe.js[file_name].file_name, file_name, "the js resource has the correct filename" );
+            ok( Bigpipe.js[file_name], "the js resource was created" );
+            equals( Bigpipe.js[file_name].file_name, file_name, "the js resource has the correct filename" );
 
-            equals( BigPipe.js[file_name].load_phase, 2, "the js resource fully loaded" );
+            equals( Bigpipe.js[file_name].load_phase, 2, "the js resource fully loaded" );
 
-            element = BigPipe.js[file_name].el;
+            element = Bigpipe.js[file_name].el;
 
             equals(element.attr('type'), "text/javascript");
             equals(element.attr('src'), file_name + ".js");
@@ -159,18 +159,18 @@
             css       : css_file_names
           };
 
-          BigPipe.add_pagelet(data);
+          Bigpipe.add_pagelet(data);
           setTimeout(function(){}, 200); // let the resource load to completion, ie load_phase 2
 
           for(i = 0; i < js_file_names.length; i++) {
             file_name = js_file_names[i];
 
-            ok( BigPipe.js[file_name], "the js resource was created" );
-            equals( BigPipe.js[file_name].file_name, file_name, "the js resource has the correct filename" );
+            ok( Bigpipe.js[file_name], "the js resource was created" );
+            equals( Bigpipe.js[file_name].file_name, file_name, "the js resource has the correct filename" );
 
-            equals( BigPipe.js[file_name].load_phase, 2, "the js resource fully loaded" );
+            equals( Bigpipe.js[file_name].load_phase, 2, "the js resource fully loaded" );
 
-            element = BigPipe.js[file_name].el;
+            element = Bigpipe.js[file_name].el;
 
             equals(element.attr('type'), "text/javascript");
             equals(element.attr('src'), file_name + ".js");
@@ -179,12 +179,12 @@
           for(i = 0; i < css_file_names.length; i++) {
             file_name = css_file_names[i];
 
-            ok( BigPipe.css[file_name], "the css resource was created" );
-            equals( BigPipe.css[file_name].file_name, file_name, "the css resource has the correct filename" );
+            ok( Bigpipe.css[file_name], "the css resource was created" );
+            equals( Bigpipe.css[file_name].file_name, file_name, "the css resource has the correct filename" );
 
-            equals( BigPipe.css[file_name].load_phase, 2, "the css resource fully loaded" );
+            equals( Bigpipe.css[file_name].load_phase, 2, "the css resource fully loaded" );
 
-            element = BigPipe.css[file_name].el;
+            element = Bigpipe.css[file_name].el;
 
             equals(element.attr('rel'), "stylesheet");
             equals(element.attr('href'), file_name + ".css");
@@ -204,27 +204,27 @@
             css       : "my_css"
           }
 
-          BigPipe.add_pagelet(pagelet1_data);
-          BigPipe.add_pagelet(pagelet2_data);
+          Bigpipe.add_pagelet(pagelet1_data);
+          Bigpipe.add_pagelet(pagelet2_data);
           setTimeout(function(){}, 200); // let the resource load to completion, ie load_phase 2
 
           // Test the pagelet with the JS resource
-          ok( BigPipe.js["my_js"], "the js resource was created" );
-          equals( BigPipe.js["my_js"].file_name, "my_js", "the js resource has the correct filename" );
+          ok( Bigpipe.js["my_js"], "the js resource was created" );
+          equals( Bigpipe.js["my_js"].file_name, "my_js", "the js resource has the correct filename" );
 
-          equals( BigPipe.js["my_js"].load_phase, 2, "the js resource fully loaded" );
+          equals( Bigpipe.js["my_js"].load_phase, 2, "the js resource fully loaded" );
 
-          element = BigPipe.js["my_js"].el;
+          element = Bigpipe.js["my_js"].el;
 
           equals(element.attr('type'), "text/javascript");
           equals(element.attr('src'), "my_js.js");
 
           // Test the pagelet with the CSS resource
-          ok( BigPipe.css["my_css"], "the css resource was created" );
-          equals( BigPipe.css["my_css"].file_name, "my_css", "the css resource has the correct filename" );
-          equals( BigPipe.css["my_css"].load_phase, 2, "the css resource fully loaded" );
+          ok( Bigpipe.css["my_css"], "the css resource was created" );
+          equals( Bigpipe.css["my_css"].file_name, "my_css", "the css resource has the correct filename" );
+          equals( Bigpipe.css["my_css"].load_phase, 2, "the css resource fully loaded" );
 
-          element = BigPipe.css["my_css"].el;
+          element = Bigpipe.css["my_css"].el;
 
           equals(element.attr('rel'), "stylesheet");
           equals(element.attr('href'), "my_css.css");
@@ -254,19 +254,19 @@
           css_file_names = pagelet1_css_file_names.concat(pagelet2_css_file_names);
           js_file_names  = pagelet1_js_file_names.concat(pagelet2_js_file_names);
 
-          BigPipe.add_pagelet(pagelet1_data);
-          BigPipe.add_pagelet(pagelet2_data);
+          Bigpipe.add_pagelet(pagelet1_data);
+          Bigpipe.add_pagelet(pagelet2_data);
           setTimeout(function(){}, 200); // let the resource load to completion, ie load_phase 2
 
           for(i = 0; i < js_file_names.length; i++) {
             file_name = js_file_names[i];
 
-            ok( BigPipe.js[file_name], "the js resource was created" );
-            equals( BigPipe.js[file_name].file_name, file_name, "the js resource has the correct filename" );
+            ok( Bigpipe.js[file_name], "the js resource was created" );
+            equals( Bigpipe.js[file_name].file_name, file_name, "the js resource has the correct filename" );
 
-            equals( BigPipe.js[file_name].load_phase, 2, "the js resource fully loaded" );
+            equals( Bigpipe.js[file_name].load_phase, 2, "the js resource fully loaded" );
 
-            element = BigPipe.js[file_name].el;
+            element = Bigpipe.js[file_name].el;
 
             equals(element.attr('type'), "text/javascript");
             equals(element.attr('src'), file_name + ".js");
@@ -275,12 +275,12 @@
           for(i = 0; i < css_file_names.length; i++) {
             file_name = css_file_names[i];
 
-            ok( BigPipe.css[file_name], "the css resource was created" );
-            equals( BigPipe.css[file_name].file_name, file_name, "the css resource has the correct filename" );
+            ok( Bigpipe.css[file_name], "the css resource was created" );
+            equals( Bigpipe.css[file_name].file_name, file_name, "the css resource has the correct filename" );
 
-            equals( BigPipe.css[file_name].load_phase, 2, "the css resource fully loaded" );
+            equals( Bigpipe.css[file_name].load_phase, 2, "the css resource fully loaded" );
 
-            element = BigPipe.css[file_name].el;
+            element = Bigpipe.css[file_name].el;
 
             equals(element.attr('rel'), "stylesheet");
             equals(element.attr('href'), file_name + ".css");
