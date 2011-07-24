@@ -14,12 +14,12 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "bigpipe_rails"
-  gem.homepage = "http://github.com/dlangevin/bigpipe_rails"
+  gem.name = "bigpipe-rails"
+  gem.homepage = "http://github.com/dlangevin/bigpipe-rails"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "dan.langevin@lifebooker.com"
+  gem.summary = %Q{Rails Engines Plugin to provide BigPipe functionality}
+  gem.description = %Q{Takes advantage of context switching and provides in Rails 3.1}
+  gem.email = "dan.langevin@gmail.com"
   gem.authors = ["Dan Langevin"]
   # dependencies defined in Gemfile
 end
