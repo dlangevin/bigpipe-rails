@@ -146,4 +146,5 @@ class Pagelet
     else
       $j(@container).append(@content)
 
+this.$j = jQuery.noConflict()
 this.BigPipe = new BigPipe()

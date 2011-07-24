@@ -10,6 +10,7 @@ group :development, :test do
   gem "bundler"
   gem "jeweler"
   gem "guard-rspec"
+  gem "guard-coffeescript"
   gem "ruby-debug19", :require => "ruby-debug"
   gem 'mocha'
   gem 'unicorn'
