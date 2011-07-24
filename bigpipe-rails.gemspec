@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bigpipe-rails}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dan Langevin"]
@@ -28,11 +28,72 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "assets/big_pipe.coffee",
+    "assets/bigpipe.coffee",
+    "assets/bigpipe.js",
     "bigpipe-rails.gemspec",
     "lib/bigpipe_rails.rb",
     "lib/bigpipe_rails/helper.rb",
-    "spec/bigpipe_rails_spec.rb",
+    "lib/engines.rb",
+    "qunit/.DS_Store",
+    "qunit/qunit.css",
+    "qunit/qunit.js",
+    "qunit/tests.html",
+    "spec/dummy_app/.gitignore",
+    "spec/dummy_app/Gemfile",
+    "spec/dummy_app/Gemfile.lock",
+    "spec/dummy_app/README",
+    "spec/dummy_app/Rakefile",
+    "spec/dummy_app/app/assets/images/rails.png",
+    "spec/dummy_app/app/assets/javascripts/application.js",
+    "spec/dummy_app/app/assets/stylesheets/application.css",
+    "spec/dummy_app/app/controllers/application_controller.rb",
+    "spec/dummy_app/app/controllers/test_controller.rb",
+    "spec/dummy_app/app/helpers/application_helper.rb",
+    "spec/dummy_app/app/mailers/.gitkeep",
+    "spec/dummy_app/app/models/.gitkeep",
+    "spec/dummy_app/app/views/layouts/application.html.erb",
+    "spec/dummy_app/app/views/test/test.html.erb",
+    "spec/dummy_app/app/views/test/test_with_exception.html.erb",
+    "spec/dummy_app/config.ru",
+    "spec/dummy_app/config/application.rb",
+    "spec/dummy_app/config/boot.rb",
+    "spec/dummy_app/config/database.yml",
+    "spec/dummy_app/config/environment.rb",
+    "spec/dummy_app/config/environments/development.rb",
+    "spec/dummy_app/config/environments/production.rb",
+    "spec/dummy_app/config/environments/test.rb",
+    "spec/dummy_app/config/initializers/backtrace_silencers.rb",
+    "spec/dummy_app/config/initializers/inflections.rb",
+    "spec/dummy_app/config/initializers/mime_types.rb",
+    "spec/dummy_app/config/initializers/secret_token.rb",
+    "spec/dummy_app/config/initializers/session_store.rb",
+    "spec/dummy_app/config/initializers/wrap_parameters.rb",
+    "spec/dummy_app/config/locales/en.yml",
+    "spec/dummy_app/config/routes.rb",
+    "spec/dummy_app/config/unicorn.rb",
+    "spec/dummy_app/db/seeds.rb",
+    "spec/dummy_app/lib/tasks/.gitkeep",
+    "spec/dummy_app/log/.gitkeep",
+    "spec/dummy_app/public/404.html",
+    "spec/dummy_app/public/422.html",
+    "spec/dummy_app/public/500.html",
+    "spec/dummy_app/public/favicon.ico",
+    "spec/dummy_app/public/index.html",
+    "spec/dummy_app/public/javascripts/bigpipe.js",
+    "spec/dummy_app/public/robots.txt",
+    "spec/dummy_app/script/rails",
+    "spec/dummy_app/spec/spec_helper.rb",
+    "spec/dummy_app/test/fixtures/.gitkeep",
+    "spec/dummy_app/test/functional/.gitkeep",
+    "spec/dummy_app/test/integration/.gitkeep",
+    "spec/dummy_app/test/integration/testabc_test.rb",
+    "spec/dummy_app/test/performance/browsing_test.rb",
+    "spec/dummy_app/test/test_helper.rb",
+    "spec/dummy_app/test/unit/.gitkeep",
+    "spec/dummy_app/vendor/assets/stylesheets/.gitkeep",
+    "spec/dummy_app/vendor/plugins/.gitkeep",
+    "spec/lib/bigpipe_rails_spec.rb",
+    "spec/requests/bigpipe_request_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/dlangevin/bigpipe-rails}
@@ -46,23 +107,47 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, ["= 3.1.0.rc4"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<sqlite3>, [">= 0"])
+      s.add_development_dependency(%q<rspec-rails>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<guard-rspec>, [">= 0"])
+      s.add_development_dependency(%q<guard-coffeescript>, [">= 0"])
+      s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
+      s.add_development_dependency(%q<mocha>, [">= 0"])
+      s.add_development_dependency(%q<unicorn>, [">= 0"])
+      s.add_development_dependency(%q<factory_girl_rails>, [">= 0"])
+      s.add_development_dependency(%q<rails3-generators>, [">= 0"])
+      s.add_development_dependency(%q<growl>, [">= 0"])
     else
       s.add_dependency(%q<rails>, ["= 3.1.0.rc4"])
-      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<sqlite3>, [">= 0"])
+      s.add_dependency(%q<rspec-rails>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<guard-rspec>, [">= 0"])
+      s.add_dependency(%q<guard-coffeescript>, [">= 0"])
+      s.add_dependency(%q<ruby-debug19>, [">= 0"])
+      s.add_dependency(%q<mocha>, [">= 0"])
+      s.add_dependency(%q<unicorn>, [">= 0"])
+      s.add_dependency(%q<factory_girl_rails>, [">= 0"])
+      s.add_dependency(%q<rails3-generators>, [">= 0"])
+      s.add_dependency(%q<growl>, [">= 0"])
     end
   else
     s.add_dependency(%q<rails>, ["= 3.1.0.rc4"])
-    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<sqlite3>, [">= 0"])
+    s.add_dependency(%q<rspec-rails>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<guard-rspec>, [">= 0"])
+    s.add_dependency(%q<guard-coffeescript>, [">= 0"])
+    s.add_dependency(%q<ruby-debug19>, [">= 0"])
+    s.add_dependency(%q<mocha>, [">= 0"])
+    s.add_dependency(%q<unicorn>, [">= 0"])
+    s.add_dependency(%q<factory_girl_rails>, [">= 0"])
+    s.add_dependency(%q<rails3-generators>, [">= 0"])
+    s.add_dependency(%q<growl>, [">= 0"])
   end
 end
 
