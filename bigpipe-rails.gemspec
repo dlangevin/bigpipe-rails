@@ -22,14 +22,16 @@ Gem::Specification.new do |s|
     ".rspec",
     "Gemfile",
     "Gemfile.lock",
+    "Guardfile",
     "LICENSE.txt",
     "README.md",
     "README.rdoc",
     "Rakefile",
     "VERSION",
     "assets/big_pipe.coffee",
-    "lib/bigpipe.rb",
-    "lib/bigpipe/helper.rb",
+    "bigpipe-rails.gemspec",
+    "lib/bigpipe_rails.rb",
+    "lib/bigpipe_rails/helper.rb",
     "spec/bigpipe_rails_spec.rb",
     "spec/spec_helper.rb"
   ]

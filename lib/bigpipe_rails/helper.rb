@@ -1,4 +1,4 @@
-module Bigpipe
+module BigpipeRails
   module Helper
     # helper method to put Bigpipe on the page
     def bigpipe(container, opts = {}, &block)
