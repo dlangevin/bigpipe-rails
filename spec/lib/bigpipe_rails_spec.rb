@@ -1,15 +1,7 @@
-require File.join("../spec_helper", __FILE__)
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "BigpipeRails" do
   it "is included in ApplicationHelper" do
-    ApplicationHelper.public_instance_methods.should include :bigpipe
-  end
-  
-  describe "GET /test" do
-    it "displays bigpipe content as a javascript tag" do
-      debugger
-      get("/test")
-      true
-    end
+    ActionView::Base.new.public_methods.should include :bigpipe
   end
 end

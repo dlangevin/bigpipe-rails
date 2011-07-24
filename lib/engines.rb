@@ -5,8 +5,7 @@ module BigpipeRails
   class Railties < Rails::Engine
     
     engine_name :bigpipe_rails
-    
-    ApplicationHelper.send(:include, BigpipeRails::Helper)
-        
+    # include our helper
+    ActionView::Base.send(:include, BigpipeRails::Helper)
   end
 end

@@ -1,0 +1,7 @@
+<% bigpipe("#main", :css => [], :js => [])  do -%>
+  <h1>Hello!</h1>
+<% end %>
+
+<% bigpipe("#main2", :css => [], :js => [])  do -%>
+  <% raise Exception.new("!!!!") %>
+<% end %>
