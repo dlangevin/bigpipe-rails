@@ -5,6 +5,8 @@ describe "BigpipeRails" do
     it "displays bigpipe content as a javascript tag" do
       get("/test")
       response.body.should match("Hello!")
+      # test to make sure that we aren't re-escaping
+      response.body.should_not match("&quot;")
       true
     end
   end

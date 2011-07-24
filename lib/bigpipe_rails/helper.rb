@@ -21,13 +21,17 @@ module BigpipeRails
           opts, block = pipe
           # we actually run the block here - 
           # TODO: use em-synchrony and/or our own Fiber implementation
-          opts[:content] = escape_javascript(capture(&block))
-          data = capture do
-            javascript_tag do
-              %Q{BigPipe.add_pagelet(#{opts.to_json});}
-            end
-          end
-          self.output_buffer << data
+          opts[:content] = capture(&block)
+          # TODO: we are re-escaping here for some reason - should be able to use javascript_tag
+          # helper, need to see why it doesn't work
+          data = %Q{
+            <script type="text/javascript">
+              <![CDATA[
+                BigPipe.add_pagelet(#{opts.to_json});
+              ]]>
+            </script>
+          }
+          self.output_buffer.safe_concat(data)
         end
         ""
       end
