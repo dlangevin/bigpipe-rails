@@ -8,9 +8,10 @@ module BigpipeRails
     # include our helper
     ActionView::Base.send(:include, BigpipeRails::Helper)
     
-    # copy over our bigpipe
-    FileUtils.mkdir_p(File.join(Rails.root, "public", "javascripts"))
-    FileUtils.cp(File.join(BigpipeRails.root, "assets", "bigpipe.js"), File.join(Rails.root, "public", "javascripts"))
-    
+    initializer("bigpipe_rails.add_bigpipe_js") do
+      # copy over our bigpipe
+      FileUtils.mkdir_p(File.join(Rails.root, "public", "javascripts"))
+      FileUtils.cp(File.join(BigpipeRails.root, "assets", "bigpipe.js"), File.join(Rails.root, "public", "javascripts"))
+    end
   end
 end
