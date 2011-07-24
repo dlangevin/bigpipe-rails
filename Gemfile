@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
-gem "rails", "3.1.0.rc4"
+gem "rails", "3.0.9"
+gem "template_streaming", "0.1.0"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

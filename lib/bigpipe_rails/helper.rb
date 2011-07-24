@@ -27,7 +27,7 @@ module BigpipeRails
               %Q{BigPipe.add_pagelet(#{opts.to_json});}
             end
           end
-          self.output_buffer << data
+          self.push(data)
         end
         ""
       end
