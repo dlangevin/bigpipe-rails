@@ -26,9 +26,9 @@ module BigpipeRails
           # helper, need to see why it doesn't work
           data = %Q{
             <script type="text/javascript">
-              <![CDATA[
-                BigPipe.add_pagelet(#{opts.to_json});
-              ]]>
+              //<![CDATA[
+                Bigpipe.add_pagelet(#{opts.to_json});
+              //]]>
             </script>
           }
           self.output_buffer.safe_concat(data)
