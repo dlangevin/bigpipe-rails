@@ -1,4 +1,4 @@
-require "spec_helper"
+require File.join("../spec_helper", __FILE__)
 
 describe "BigpipeRails" do
   it "is included in ApplicationHelper" do

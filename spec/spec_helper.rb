@@ -10,11 +10,6 @@ ActiveRecord::Migrator.migrate File.expand_path("../dummy_app/db/migrate/", __FI
 
 require 'bigpipe_rails'
 
-# No idea why this is necessary - maybe a Rails 3.1 issue?  But Rspec isn't including
-# any integration test methods
-Rspec::Core::ExampleGroup.send(:include, RSpec::Rails::RequestExampleGroup)
-
-
 ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.default_url_options[:host] = "test.com"
