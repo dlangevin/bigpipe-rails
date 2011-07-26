@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>DummyApp</title>
+  <%= javascript_include_tag("http://code.jquery.com/jquery-latest.js") %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "bigpipe" %>
@@ -10,6 +11,7 @@
 <body>
 
 <div id="main"></div>
+<div id="main2"></div>
 
 <%= yield %>
 

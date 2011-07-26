@@ -1,3 +1,9 @@
 <% bigpipe("#main", :css => [], :js => [])  do -%>
+  <% sleep(5) %>
   <h1>Hello!</h1>
+<% end %>
+
+<% bigpipe("#main2", :css => [], :js => [])  do -%>
+  <% sleep(5) %>
+  <h1>World!</h1>
 <% end %>

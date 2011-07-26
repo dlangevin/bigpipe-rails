@@ -32,6 +32,7 @@ module BigpipeRails
             </script>
           }
           self.output_buffer.safe_concat(data)
+          true
         end
         ""
       end
