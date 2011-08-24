@@ -7,6 +7,8 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 
+require "bigpipe_rails"
+
 # start the debugger
 require "ruby-debug"
 Debugger.start

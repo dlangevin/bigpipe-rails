@@ -1,7 +1,3 @@
-# remove the js file - this is hard-coded becaues it has to happen before the spec helper is loaded
-require 'fileutils'
-FileUtils.rm_f(File.expand_path(File.dirname(__FILE__) + '/dummy_app/public/javascripts/bigpipe.js'))
-
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "BigpipeRails" do
@@ -12,7 +8,7 @@ describe "BigpipeRails" do
   
   it "should move the generated js file into the public directory" do
     # Rails.root is in the dummy app
-    File.exists?(File.join(Rails.root,'app','assets','javascripts','bigpipe.js')).should be true
+    Rails.application.config.assets.paths.should include File.join(BigpipeRails.root, "assets")
   end
   
 end

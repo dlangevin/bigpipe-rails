@@ -2,6 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/
+pkg/
 .sass-cache/
 Gemfile.lock
 coverage/
