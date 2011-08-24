@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "rails", "3.1.0.rc4"
+gem 'bigpipe-rails', :path => 'lib/bigpipe-rails'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

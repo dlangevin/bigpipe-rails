@@ -36,4 +36,10 @@ DummyApp::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  config.after_initialize do
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.default_url_options[:host] = "test.com"
+  end
 end
